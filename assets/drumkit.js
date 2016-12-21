@@ -1,12 +1,57 @@
-function playSound(e){
-    const audio = document.querySelector("audio[data-key='"+e.keyCode+"']");
-    if(!audio) return;
+/* Capture Querty events and generate the appropriate MIDI note */
+window.addEventListener("keydown", function(e){
+    var note;
+    switch(e.keyCode){
+        case 65:
+            note = "C3";
+            break;
+        case 87:
+            note = "C#3";
+            break;
+        case 83:
+            note = "D3";
+            break;
+        case 69:
+            note = "D#3";
+            break;
+        case 68:
+            note = "E3";
+            break;
+        case 70:
+            note = "F3";
+            break;
+        case 84:
+            note = "F#3";
+            break;
+        case 71:
+            note = "G3";
+            break;
+        case 89:
+            note = "G#3";
+            break;
+        case 72:
+            note = "A3";
+            break;
+        case 85:
+            note = "A#3";
+            break;
+        case 74:
+            note = "B3";
+            break;
+        default:
+            return;
+    }
+    playMIDI(note);
+});
 
-    audio.play();
+/* Enable the virtual keyboard to send MIDI events */
+var pads = document.getElementsByClassName("pads__pad");
+for(var i = 0; i < pads.length; i++){
+    pads[i].addEventListener("click", function(){
+        playMIDI(this.getAttribute("data-note"));
+    });
 }
 
-const keys = Array.from(document.querySelectorAll(".pads__pad"));
-
-window.addEventListener("keydown", function(e){
-    playSound(e);
-});
+function playMIDI(note){
+    console.log(note);
+}
