@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS Drumkit</title>
+    <link rel="stylesheet" href="assets/reset.css">
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+    <div class="pads">
+        <button class="pads__pad">
+            <span class="sound">Kick</span>
+            <span class="note">C3</span>
+            <kbd class="key">A</kbd>
+        </button>
+        <button class="pads__pad">
+            <span class="sound">Rim</span>
+            <span class="note">C#3</span>
+            <kbd class="key">W</kbd>
+        </button>
+        <button class="pads__pad">
+            <span class="sound">Snare</span>
+            <span class="note">D3</span>
+            <kbd class="key">S</kbd>
+        </button>
+        <button class="pads__pad">
+            <span class="sound">Clap</span>
+            <span class="note">D#3</span>
+            <kbd class="key">E</kbd>
+        </button>
+        <button class="pads__pad">
+            <span class="sound">Snare</span>
+            <span class="note">E3</span>
+            <kbd class="key">D</kbd>
+        </button>
+        <button class="pads__pad">
+            <span class="sound">Tom</span>
+            <span class="note">F3</span>
+            <kbd class="key">F</kbd>
+        </button>
+        <button class="pads__pad">
+            <span class="sound">HH Closed</span>
+            <span class="note">F#3</span>
+            <kbd class="key">T</kbd>
+        </button>
+        <button class="pads__pad">
+            <span class="sound">Tom</span>
+            <span class="note">G3</span>
+            <kbd class="key">G</kbd>
+        </button>
+        <button class="pads__pad">
+            <span class="sound">HH Pedal</span>
+            <span class="note">G#3</span>
+            <kbd class="key">Y</kbd>
+        </button>
+        <button class="pads__pad">
+            <span class="sound">Tom</span>
+            <span class="note">A3</span>
+            <kbd class="key">H</kbd>
+        </button>
+        <button class="pads__pad">
+            <span class="sound">HH Open</span>
+            <span class="note">A#3</span>
+            <kbd class="key">U</kbd>
+        </button>
+        <button class="pads__pad">
+            <span class="sound">Tom</span>
+            <span class="note">B3</span>
+            <kbd class="key">J</kbd>
+        </button>
+    </div>
+
+    <audio data-key="65" src="sounds/kick.wav"></audio>
+    <audio data-key="87" src="sounds/rim.wav"></audio>
+    <audio data-key="83" src="sounds/snare1.wav"></audio>
+    <audio data-key="69" src="sounds/clap.wav"></audio>
+    <audio data-key="68" src="sounds/snare2.wav"></audio>
+    <audio data-key="70" src="sounds/tomlo.wav"></audio>
+    <audio data-key="84" src="sounds/hhc.wav"></audio>
+    <audio data-key="71" src="sounds/tomlo.wav"></audio>
+    <audio data-key="89" src="sounds/hhc.wav"></audio>
+    <audio data-key="72" src="sounds/tommed.wav"></audio>
+    <audio data-key="85" src="sounds/hho.wav"></audio>
+    <audio data-key="74" src="sounds/tomhi.wav"></audio>
+
+    <script src="assets/drumkit.js"></script>
+</body>
+</html>

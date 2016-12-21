@@ -1,0 +1,46 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.pads {
+    display: flex;
+}
+
+.pads__pad {
+    border: 2px solid black;
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: 2px;
+    padding: 5px;
+    width: 75px;
+    height: 60px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.pads__pad:nth-child(2),
+.pads__pad:nth-child(4),
+.pads__pad:nth-child(7),
+.pads__pad:nth-child(9),
+.pads__pad:nth-child(11) {
+    margin-right: -75px;
+    position: relative;
+    bottom: 62px;
+    left: -35px;
+}
+
+.pads__pad .sound {
+    width: 100%;
+    text-align: left;
+}
+
+.pads__pad .note {
+    flex: 1;
+    text-align: left;
+}
+.pads__pad .key {
+    text-align: right;
+}
