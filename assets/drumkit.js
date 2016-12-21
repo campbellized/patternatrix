@@ -1,3 +1,11 @@
+var local = true;
+
+WebMidi.enable(function(err){
+    if(err){
+        console.log("WebMidi could not be enabled.", err);
+    }
+});
+
 /* Capture Querty events and generate the appropriate MIDI note */
 window.addEventListener("keydown", function(e){
     var note;
@@ -53,5 +61,16 @@ for(var i = 0; i < pads.length; i++){
 }
 
 function playMIDI(note){
-    console.log(note);
+    if(WebMidi && WebMidi.outputs.length){
+        output = WebMidi.outputs[0];
+        output.playNote(note);
+    }
+    if(local){
+        playSound(note);
+    }
+}
+
+function playSound(note){
+    var audio = document.querySelector("audio[data-tone='"+note+"']");
+    audio.play();
 }
