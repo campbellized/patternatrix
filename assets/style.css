@@ -46,6 +46,10 @@ body {
     text-align: right;
 }
 
+.pads__pad.active {
+    border-color: red;
+}
+
 .sequencer {
     margin-top: 50px;
 }

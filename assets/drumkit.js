@@ -1,6 +1,13 @@
 var local = true;
 var tempo = 120;
 var playing = false;
+var recording = true;
+var beat = 1;
+/* Initialize a sequence */
+var sequence = new Array(16);
+for (var i = 0; i < 16; i++) {
+  sequence[i] = {};
+}
 
 WebMidi.enable(function(err){
     if(err){
@@ -70,6 +77,9 @@ function playMIDI(note){
     if(local){
         playSound(note);
     }
+    if(recording){
+        toggleNoteInStep(beat, note);
+    }
 }
 
 function playSound(note){
@@ -79,30 +89,50 @@ function playSound(note){
     audio.play();
 }
 
-/* Sequencer */
-var ticksPerSecond = tempo / 60;
-var beat = 1;
-setInterval(timeClock, 1000 / ticksPerSecond);
 
-function timeClock() {
+/* Sequencer */
+
+var ticksPerSecond = tempo / 60;
+setInterval(incrementStep, 1000 / ticksPerSecond);
+
+function toggleNoteInStep(step, note){
+    if(sequence[step - 1][note]){
+        delete sequence[step - 1][note];
+    }else{
+        sequence[step - 1][note] = 1;
+    }
+}
+
+function incrementStep(){
     if(playing){
         document.querySelector("input[name='step']:nth-child("+beat+")").checked = true;
+        playSoundsInStep(beat);
         // console.log(beat);
         beat %= 16;
         beat++;
     }
 }
 
+function playSoundsInStep(step){
+    var sounds = Object.keys(sequence[step - 1]);
+    var audio;
+    for(i = 0; i < sounds.length; i++){
+        playSound(sounds[i]);
+    }
+}
+
+/* Add event listener to sequencer step indicators */
 window.addEventListener("click", function(e){
     if(e.srcElement.name !== "step") return;
     beat = e.srcElement.value;
 });
 
+/* Add event listener to sequencer controls */
 window.addEventListener("click", function(e){
     if(e.srcElement.id === "play") {
         playing = true;
     }else if(e.srcElement.id === "stop") {
-        if(playing == false) {
+        if(playing === false) {
             document.querySelector("input[name='step']:nth-child(1)").checked = true;
             beat = 1;
         }
