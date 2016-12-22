@@ -1,4 +1,5 @@
 var local = true;
+var tempo = 120;
 
 WebMidi.enable(function(err){
     if(err){
@@ -75,4 +76,12 @@ function playSound(note){
 
     audio.currentTime = 0;
     audio.play();
+}
+
+/* Sequencer */
+var ticksPerSecond = tempo / 60;
+setInterval(timeClock, 1000 / ticksPerSecond);
+
+function timeClock() {
+    console.log("tick");
 }

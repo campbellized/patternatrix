@@ -1,5 +1,6 @@
 body {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
@@ -43,4 +44,12 @@ body {
 }
 .pads__pad .key {
     text-align: right;
+}
+
+.sequencer {
+    margin-top: 50px;
+}
+
+.sequencer input[type="radio"] {
+    cursor: pointer;
 }
