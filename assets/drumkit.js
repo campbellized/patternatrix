@@ -1,5 +1,6 @@
 var local = true;
 var tempo = 120;
+var playing = false;
 
 WebMidi.enable(function(err){
     if(err){
@@ -80,8 +81,33 @@ function playSound(note){
 
 /* Sequencer */
 var ticksPerSecond = tempo / 60;
+var beat = 1;
 setInterval(timeClock, 1000 / ticksPerSecond);
 
 function timeClock() {
-    console.log("tick");
+    if(playing){
+        document.querySelector("input[name='step']:nth-child("+beat+")").checked = true;
+        // console.log(beat);
+        beat %= 16;
+        beat++;
+    }
 }
+
+window.addEventListener("click", function(e){
+    if(e.srcElement.name !== "step") return;
+    beat = e.srcElement.value;
+});
+
+window.addEventListener("click", function(e){
+    if(e.srcElement.id === "play") {
+        playing = true;
+    }else if(e.srcElement.id === "stop") {
+        if(playing == false) {
+            document.querySelector("input[name='step']:nth-child(1)").checked = true;
+            beat = 1;
+        }
+        playing = false;
+    }else{
+        return;
+    }
+});

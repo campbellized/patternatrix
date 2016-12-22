@@ -72,7 +72,7 @@
     </div>
 
     <div class="sequencer">
-        <form>
+        <form id="step-sequencer">
           <input type="radio" name="step" value="1" checked>
           <input type="radio" name="step" value="2">
           <input type="radio" name="step" value="3">
@@ -90,6 +90,11 @@
           <input type="radio" name="step" value="15">
           <input type="radio" name="step" value="16">
         </form>
+    </div>
+
+    <div class="sequencer-controls">
+        <button id="stop">Stop</button>
+        <button id="play">Play</button>
     </div>
 
     <audio data-tone="C3" src="sounds/kick.wav"></audio>
