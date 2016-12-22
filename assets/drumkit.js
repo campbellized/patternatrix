@@ -1,7 +1,7 @@
 var local = true;
 var tempo = 120;
 var playing = false;
-var recording = true;
+var recording = false;
 var beat = 1;
 /* Initialize a sequence */
 var sequence = new Array(16);
@@ -115,7 +115,6 @@ function incrementStep(){
 }
 
 function playSoundsInStep(step){
-    console.log(sequence[step - 1]);
     var sounds = Object.keys(sequence[step - 1]);
     var audio;
     for(i = 0; i < sounds.length; i++){
@@ -172,8 +171,9 @@ window.addEventListener("click", function(e){
         }
         playing = false;
     }else if(e.srcElement.id === "record"){
-        console.log("Recording:", recording);
+        e.srcElement.classList.toggle("active");
         recording = !recording;
+        console.log("Recording:", recording);
     }else{
         return;
     }

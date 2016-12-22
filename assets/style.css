@@ -60,3 +60,6 @@ body {
 .sequencer-controls button {
     cursor: pointer;
 }
+.sequencer-controls button.active {
+    border: 1px solid red;
+}
