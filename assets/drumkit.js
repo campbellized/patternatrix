@@ -101,6 +101,7 @@ function toggleNoteInStep(step, note){
     }else{
         sequence[step - 1][note] = 1;
     }
+    togglePad(note);
 }
 
 function incrementStep(){
@@ -114,17 +115,50 @@ function incrementStep(){
 }
 
 function playSoundsInStep(step){
+    console.log(sequence[step - 1]);
     var sounds = Object.keys(sequence[step - 1]);
     var audio;
     for(i = 0; i < sounds.length; i++){
         playSound(sounds[i]);
     }
 }
+function activatePad(note){
+    var p = document.querySelector(".pads__pad[data-note='"+note+"']");
+    p.classList.add("active");
+}
+
+function deactivatePad(note){
+    var p = document.querySelector(".pads__pad[data-note='"+note+"']");
+    p.classList.remove("active");
+}
+
+function togglePad(note){
+    var p = document.querySelector(".pads__pad[data-note='"+note+"']");
+    p.classList.toggle("active");
+}
+
+function activatePadsInStep(step){
+    var pads = Object.keys(sequence[beat - 1]);
+
+    for(i = 0; i < pads.length; i++){
+        activatePad(pads[i]);
+    }
+}
+
+function deactivatePads(){
+    var activePads = document.querySelectorAll(".pads__pad.active");
+
+    [].forEach.call(activePads, function(el) {
+        deactivatePad(el.getAttribute("data-note"));
+    });
+}
 
 /* Add event listener to sequencer step indicators */
 window.addEventListener("click", function(e){
     if(e.srcElement.name !== "step") return;
     beat = e.srcElement.value;
+    deactivatePads();
+    activatePadsInStep(beat);
 });
 
 /* Add event listener to sequencer controls */
@@ -137,6 +171,9 @@ window.addEventListener("click", function(e){
             beat = 1;
         }
         playing = false;
+    }else if(e.srcElement.id === "record"){
+        console.log("Recording:", recording);
+        recording = !recording;
     }else{
         return;
     }
