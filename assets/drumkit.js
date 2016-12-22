@@ -72,5 +72,7 @@ function playMIDI(note){
 
 function playSound(note){
     var audio = document.querySelector("audio[data-tone='"+note+"']");
+
+    audio.currentTime = 0;
     audio.play();
 }
