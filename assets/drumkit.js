@@ -137,7 +137,6 @@ var jsDrum = (function(window){
         for (var i = 0; i < stepsPerSequence; i++) {
           sequence[i] = {};
         }
-
         setInterval(incrementStep, 1000 / ticksPerSecond);
     }
     sequencer.tempo = function(){return tempo;};
