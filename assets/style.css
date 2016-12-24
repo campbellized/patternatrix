@@ -6,12 +6,21 @@ body {
     min-height: 100vh;
 }
 
+.drum-machine {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid black;
+    padding: 2em;
+}
+
 .pads {
     display: flex;
+    margin-top: 60px;
 }
 
 .pads__pad {
-    border: 2px solid black;
+    border: 1px solid black;
     display: flex;
     flex-wrap: wrap;
     margin-right: 2px;
@@ -20,6 +29,7 @@ body {
     height: 60px;
     box-sizing: border-box;
     cursor: pointer;
+    outline: none;
 }
 
 .pads__pad:nth-child(2),
@@ -57,9 +67,29 @@ body {
 .sequencer input[type="radio"] {
     cursor: pointer;
 }
+
+.sequencer-controls {
+    margin-top: 1em;
+}
 .sequencer-controls button {
     cursor: pointer;
+    outline: none;
 }
 .sequencer-controls button.active {
     border: 1px solid red;
+}
+
+.step-sequencer__border {
+    display: flex;
+    margin-bottom: 0.25em;
+}
+
+.step-sequencer__border div {
+    width: 25%;
+    height: 2px;
+    margin-right: 2px;
+    background: #000;
+}
+.step-sequencer__border div:last-child {
+    margin-right: 0;
 }
