@@ -4,14 +4,18 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    background: url("geometry.png");
 }
 
 .drum-machine {
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 2px solid black;
+    border: 1px solid #cecece;
     padding: 2em;
+    border-radius: 5px;
+    box-shadow: 0px 2px 0px 0px #aeaeae;
+    background: #fafafa;
 }
 
 .pads {
@@ -23,13 +27,18 @@ body {
     border: 1px solid black;
     display: flex;
     flex-wrap: wrap;
-    margin-right: 2px;
-    padding: 5px;
+    margin-right: 5px;
     width: 75px;
     height: 60px;
     box-sizing: border-box;
     cursor: pointer;
     outline: none;
+    border-radius: 3px;
+    padding: 0.5em 1em;
+    box-shadow: 0px 1px 0px 0px #aeaeae;
+    border-width: 1px;
+    border-color: #cecece;
+    background: #f5f5f5;
 }
 
 .pads__pad:nth-child(2),
@@ -39,7 +48,7 @@ body {
 .pads__pad:nth-child(11) {
     margin-right: -75px;
     position: relative;
-    bottom: 62px;
+    bottom: 65px;
     left: -35px;
 }
 
@@ -57,7 +66,9 @@ body {
 }
 
 .pads__pad.active {
-    border-color: red;
+    border-color: #da8718;
+    box-shadow: 0px 0px 0px 0px #aeaeae;
+    transform: translateY(2px);
 }
 
 .sequencer {
@@ -74,9 +85,17 @@ body {
 .sequencer-controls button {
     cursor: pointer;
     outline: none;
+    background: #f5f5f5;
+    border-radius: 3px;
+    padding: 0.5em 1em;
+    box-shadow: 0px 1px 0px 0px #aeaeae;
+    border-width: 1px;
+    border-color: #cecece;
 }
 .sequencer-controls button.active {
-    border: 1px solid red;
+    border: 1px solid #da8718;
+    box-shadow: 0px 0px 0px 0px #aeaeae;
+    transform: translateY(2px);
 }
 
 .step-sequencer__border {
@@ -88,7 +107,9 @@ body {
     width: 25%;
     height: 2px;
     margin-right: 2px;
-    background: #000;
+    border: 1px solid #ad6b13;
+    border-radius: 1px;
+    background: #fb9c1d;
 }
 .step-sequencer__border div:last-child {
     margin-right: 0;
