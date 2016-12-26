@@ -7,13 +7,19 @@ var Patternatrix = (function(window){
      * If local is disabled, no sound will be generated. If a MIDI output is
      * available, MIDI notes will still be sent.
      */
-    var local = true;
     var sequencer;
     var ui;
+    var local = true;
+    var midiChannel = 10;
+    var midiIn;
+    var midiOut;
 
     WebMidi.enable(function(err){
         if(err){
             console.log("WebMidi could not be enabled.", err);
+        }else{
+            midiIn = WebMidi.inputs[0];
+            midiOut = WebMidi.outputs[0];
         }
     });
 
@@ -43,13 +49,14 @@ var Patternatrix = (function(window){
      *  If a note already exists, it will be deleted from the current step.
      */
     function playMIDI(note){
-        if(WebMidi && WebMidi.outputs.length){
-            output = WebMidi.outputs[0];
-            output.playNote(note);
+        if(WebMidi && midiOut){
+            output.playNote(note, midiChannel);
         }
+
         if(local){
             playSound(note);
         }
+
         if(sequencer.isRecording()){
             sequencer.toggleNoteInStep(note);
         }
@@ -60,8 +67,11 @@ var Patternatrix = (function(window){
      */
     function playSound(note){
         var audio = document.querySelector("audio[data-tone='"+note+"']");
-        audio.currentTime = 0;
-        audio.play();
+
+        if(audio){
+            audio.currentTime = 0;
+            audio.play();
+        }
     }
 
     /* Capture QWERTY events and generate the appropriate MIDI note. */
@@ -109,6 +119,14 @@ var Patternatrix = (function(window){
         }
         playMIDI(note);
     });
+
+    if(midiIn){
+        input.addListener('noteon', midiChannel,
+          function (e) {
+            playMIDI(e.note.name + e.note.octave);
+          }
+        );
+    }
 
     return {
         init: intialize,
