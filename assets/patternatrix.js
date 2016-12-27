@@ -152,16 +152,16 @@ var Patternatrix = (function(window){
      * Go to the next step in the pattern and play its contents.
      */
     function incrementStep(){
+        if(playing){
             setTimeout(function(){
-                if(playing){
-                    app.ui.deactivatePads();
-                    app.ui.activatePadsInStep(beat);
-                    document.querySelector("input[name='step']:nth-of-type("+beat+")").checked = true;
-                    playSoundsInStep(beat);
-                    beat %= stepsPerSequence;
-                    beat++;
-                }
+                app.ui.deactivatePads();
+                app.ui.activatePadsInStep(beat);
+                document.querySelector("input[name='step']:nth-of-type("+beat+")").checked = true;
+                playSoundsInStep(beat);
+                beat %= stepsPerSequence;
+                beat++;
             }, ticksPerSecond);
+        }
     }
 
     /**
@@ -185,7 +185,9 @@ var Patternatrix = (function(window){
         }else{
             sequence[beat - 1][note] = 1;
         }
-        app.ui.togglePad(note);
+        // if(playing){
+            app.ui.togglePad(note);
+        // }
     }
 
     /**
