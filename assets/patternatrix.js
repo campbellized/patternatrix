@@ -223,6 +223,11 @@ var Patternatrix = (function(window){
         }else if(e.srcElement.id === "record"){
             e.srcElement.classList.toggle("active");
             recording = !recording;
+            if(!recording){
+                app.ui.deactivatePads();
+            }else{
+                app.ui.activatePadsInStep(beat);
+            }
         }else{
             return;
         }
