@@ -7,6 +7,25 @@ body {
     background: url("geometry.png");
 }
 
+.info-bar {
+    display: flex;
+    justify-content: space-between;
+    font-family: impact;
+    margin-bottom: 0.25em;
+    align-items: flex-end;
+}
+
+.info-bar h2 {
+    color: #fb9c1d;
+    text-shadow: 2px 2px 0px #ad6b13;
+    font-size: 2em;
+}
+
+.info-bar span {
+    color: #fb9c1d;
+    text-shadow: 1px 1px 0px #ad6b13;
+}
+
 .drum-machine {
     display: flex;
     flex-direction: column;

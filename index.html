@@ -8,103 +8,110 @@
 </head>
 <body>
 
-    <div class="drum-machine">
-        <div class="pads">
-            <button class="pads__pad" data-note="C3">
-                <span class="sound">Kick</span>
-                <span class="note">C3</span>
-                <kbd class="key">A</kbd>
-            </button>
-            <button class="pads__pad" data-note="C#3">
-                <span class="sound">Rim</span>
-                <span class="note">C#3</span>
-                <kbd class="key">W</kbd>
-            </button>
-            <button class="pads__pad" data-note="D3">
-                <span class="sound">Snare</span>
-                <span class="note">D3</span>
-                <kbd class="key">S</kbd>
-            </button>
-            <button class="pads__pad" data-note="D#3">
-                <span class="sound">Clap</span>
-                <span class="note">D#3</span>
-                <kbd class="key">E</kbd>
-            </button>
-            <button class="pads__pad" data-note="E3">
-                <span class="sound">Snare</span>
-                <span class="note">E3</span>
-                <kbd class="key">D</kbd>
-            </button>
-            <button class="pads__pad" data-note="F3">
-                <span class="sound">Tom</span>
-                <span class="note">F3</span>
-                <kbd class="key">F</kbd>
-            </button>
-            <button class="pads__pad" data-note="F#3">
-                <span class="sound">HH Closed</span>
-                <span class="note">F#3</span>
-                <kbd class="key">T</kbd>
-            </button>
-            <button class="pads__pad" data-note="G3">
-                <span class="sound">Tom</span>
-                <span class="note">G3</span>
-                <kbd class="key">G</kbd>
-            </button>
-            <button class="pads__pad" data-note="G#3">
-                <span class="sound">HH Pedal</span>
-                <span class="note">G#3</span>
-                <kbd class="key">Y</kbd>
-            </button>
-            <button class="pads__pad" data-note="A3">
-                <span class="sound">Tom</span>
-                <span class="note">A3</span>
-                <kbd class="key">H</kbd>
-            </button>
-            <button class="pads__pad" data-note="A#3">
-                <span class="sound">HH Open</span>
-                <span class="note">A#3</span>
-                <kbd class="key">U</kbd>
-            </button>
-            <button class="pads__pad" data-note="B3">
-                <span class="sound">Tom</span>
-                <span class="note">B3</span>
-                <kbd class="key">J</kbd>
-            </button>
+    <div class="container">
+        <div class="info-bar">
+            <h2>Patternatrix</h2>
+            <span>MIDI Ch: 10&nbsp;&nbsp;&nbsp;BPM: 120</span>
         </div>
+        <div class="drum-machine">
+            <div class="pads">
+                <button class="pads__pad" data-note="C3">
+                    <span class="sound">Kick</span>
+                    <span class="note">C3</span>
+                    <kbd class="key">A</kbd>
+                </button>
+                <button class="pads__pad" data-note="C#3">
+                    <span class="sound">Rim</span>
+                    <span class="note">C#3</span>
+                    <kbd class="key">W</kbd>
+                </button>
+                <button class="pads__pad" data-note="D3">
+                    <span class="sound">Snare</span>
+                    <span class="note">D3</span>
+                    <kbd class="key">S</kbd>
+                </button>
+                <button class="pads__pad" data-note="D#3">
+                    <span class="sound">Clap</span>
+                    <span class="note">D#3</span>
+                    <kbd class="key">E</kbd>
+                </button>
+                <button class="pads__pad" data-note="E3">
+                    <span class="sound">Snare</span>
+                    <span class="note">E3</span>
+                    <kbd class="key">D</kbd>
+                </button>
+                <button class="pads__pad" data-note="F3">
+                    <span class="sound">Tom</span>
+                    <span class="note">F3</span>
+                    <kbd class="key">F</kbd>
+                </button>
+                <button class="pads__pad" data-note="F#3">
+                    <span class="sound">HH Closed</span>
+                    <span class="note">F#3</span>
+                    <kbd class="key">T</kbd>
+                </button>
+                <button class="pads__pad" data-note="G3">
+                    <span class="sound">Tom</span>
+                    <span class="note">G3</span>
+                    <kbd class="key">G</kbd>
+                </button>
+                <button class="pads__pad" data-note="G#3">
+                    <span class="sound">HH Pedal</span>
+                    <span class="note">G#3</span>
+                    <kbd class="key">Y</kbd>
+                </button>
+                <button class="pads__pad" data-note="A3">
+                    <span class="sound">Tom</span>
+                    <span class="note">A3</span>
+                    <kbd class="key">H</kbd>
+                </button>
+                <button class="pads__pad" data-note="A#3">
+                    <span class="sound">HH Open</span>
+                    <span class="note">A#3</span>
+                    <kbd class="key">U</kbd>
+                </button>
+                <button class="pads__pad" data-note="B3">
+                    <span class="sound">Tom</span>
+                    <span class="note">B3</span>
+                    <kbd class="key">J</kbd>
+                </button>
+            </div>
 
-        <div class="sequencer">
-            <form id="step-sequencer">
-                <div class="step-sequencer__border">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </div>
-                <input type="radio" name="step" value="1" checked>
-                <input type="radio" name="step" value="2">
-                <input type="radio" name="step" value="3">
-                <input type="radio" name="step" value="4">
-                <input type="radio" name="step" value="5">
-                <input type="radio" name="step" value="6">
-                <input type="radio" name="step" value="7">
-                <input type="radio" name="step" value="8">
-                <input type="radio" name="step" value="9">
-                <input type="radio" name="step" value="10">
-                <input type="radio" name="step" value="11">
-                <input type="radio" name="step" value="12">
-                <input type="radio" name="step" value="13">
-                <input type="radio" name="step" value="14">
-                <input type="radio" name="step" value="15">
-                <input type="radio" name="step" value="16">
-            </form>
-        </div>
+            <div class="sequencer">
+                <form id="step-sequencer">
+                    <div class="step-sequencer__border">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <input type="radio" name="step" value="1" checked>
+                    <input type="radio" name="step" value="2">
+                    <input type="radio" name="step" value="3">
+                    <input type="radio" name="step" value="4">
+                    <input type="radio" name="step" value="5">
+                    <input type="radio" name="step" value="6">
+                    <input type="radio" name="step" value="7">
+                    <input type="radio" name="step" value="8">
+                    <input type="radio" name="step" value="9">
+                    <input type="radio" name="step" value="10">
+                    <input type="radio" name="step" value="11">
+                    <input type="radio" name="step" value="12">
+                    <input type="radio" name="step" value="13">
+                    <input type="radio" name="step" value="14">
+                    <input type="radio" name="step" value="15">
+                    <input type="radio" name="step" value="16">
+                </form>
+            </div>
 
-        <div class="sequencer-controls">
-            <button id="record">Rec</button>
-            <button id="stop">Stop</button>
-            <button id="play">Play</button>
+            <div class="sequencer-controls">
+                <button id="record">Rec</button>
+                <button id="stop">Stop</button>
+                <button id="play">Play</button>
+            </div>
         </div>
     </div>
+
     <audio data-tone="C3" src="sounds/kick.wav"></audio>
     <audio data-tone="C#3" src="sounds/rim.wav"></audio>
     <audio data-tone="D3" src="sounds/snare1.wav"></audio>
