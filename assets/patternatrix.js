@@ -50,7 +50,7 @@ var Patternatrix = (function(window){
      */
     function playMIDI(note){
         if(WebMidi && midiOut){
-            output.playNote(note, midiChannel);
+            midiOut.playNote(note, midiChannel);
         }
 
         if(local){
@@ -121,7 +121,7 @@ var Patternatrix = (function(window){
     });
 
     if(midiIn){
-        input.addListener('noteon', midiChannel,
+        midiIn.addListener('noteon', midiChannel,
           function (e) {
             playMIDI(e.note.name + e.note.octave);
           }
