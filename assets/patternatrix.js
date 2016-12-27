@@ -49,6 +49,13 @@ var Patternatrix = (function(window){
      *  If a note already exists, it will be deleted from the current step.
      */
     function playMIDI(note){
+        if(sequencer && !sequencer.isPlaying() && !sequencer.isRecording()){
+            ui.activatePad(note);
+            setTimeout(function(){
+                ui.deactivatePad(note);
+            }, sequencer.noteDuration());
+        }
+
         if(WebMidi && midiOut){
             midiOut.playNote(note, midiChannel);
         }
@@ -57,7 +64,7 @@ var Patternatrix = (function(window){
             playSound(note);
         }
 
-        if(sequencer.isRecording()){
+        if(sequencer && sequencer.isRecording()){
             sequencer.toggleNoteInStep(note);
         }
     }
@@ -185,9 +192,7 @@ var Patternatrix = (function(window){
         }else{
             sequence[beat - 1][note] = 1;
         }
-        // if(playing){
-            app.ui.togglePad(note);
-        // }
+        app.ui.togglePad(note);
     }
 
     /**
@@ -206,6 +211,7 @@ var Patternatrix = (function(window){
     sequencer.sequence = function(){return sequence;};
     sequencer.toggleNoteInStep = toggleNoteInStep;
     sequencer.init = initialize;
+    sequencer.noteDuration = function(){return ticksPerSecond;};
 
 
     /**
@@ -305,7 +311,9 @@ var Patternatrix = (function(window){
 
     ui.togglePad = togglePad;
     ui.activatePadsInStep = activatePadsInStep;
+    ui.activatePad = activatePad;
     ui.deactivatePads = deactivatePads;
+    ui.deactivatePad = deactivatePad;
     app.ui = ui;
 
     return app;
