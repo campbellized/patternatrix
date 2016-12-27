@@ -145,7 +145,6 @@ var Patternatrix = (function(window){
     var recording = false;
     var beat = 1;
     var ticksPerSecond = (1000 / (tempo / 60)) / 4;
-    console.log(ticksPerSecond);
     var stepsPerSequence = 16;
     var sequence = new Array(stepsPerSequence);
 
@@ -153,18 +152,16 @@ var Patternatrix = (function(window){
      * Go to the next step in the pattern and play its contents.
      */
     function incrementStep(){
-        // if(playing){
-
             setTimeout(function(){
                 if(playing){
-                    console.log(beat);
+                    app.ui.deactivatePads();
+                    app.ui.activatePadsInStep(beat);
                     document.querySelector("input[name='step']:nth-of-type("+beat+")").checked = true;
                     playSoundsInStep(beat);
                     beat %= stepsPerSequence;
                     beat++;
                 }
             }, ticksPerSecond);
-        // }
     }
 
     /**
@@ -183,7 +180,6 @@ var Patternatrix = (function(window){
      * exists, delete it.
      */
     function toggleNoteInStep(note){
-        console.log("beat is "+beat, "record to sequence[" + (beat - 1) + "]");
         if(sequence[beat - 1][note]){
             delete sequence[beat - 1][note];
         }else{
