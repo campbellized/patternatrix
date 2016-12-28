@@ -11,8 +11,12 @@ body {
     display: flex;
     justify-content: space-between;
     font-family: impact;
-    margin-bottom: 0.25em;
+    margin: 0.25em 0;
     align-items: flex-end;
+}
+
+.info-bar:last-of-type {
+    flex-direction: column-reverse;
 }
 
 .info-bar h2 {
@@ -23,7 +27,18 @@ body {
 
 .info-bar span {
     color: #fb9c1d;
-    text-shadow: 1px 1px 0px #ad6b13;
+}
+
+.info-bar a {
+    color: #fb9c1d;
+    text-decoration: none;
+    border-bottom: 1px solid #fb9c1d;
+    transition: 0.3s all ease;
+}
+
+.info-bar a:hover {
+    border-color: transparent;
+    color: #909090;
 }
 
 .drum-machine {
