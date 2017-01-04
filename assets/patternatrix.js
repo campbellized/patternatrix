@@ -20,6 +20,12 @@ var Patternatrix = (function(window){
         }else{
             midiIn = WebMidi.inputs[0];
             midiOut = WebMidi.outputs[0];
+
+            midiIn.addListener('noteon', midiChannel,
+              function (e) {
+                playMIDI(e.note.name + e.note.octave);
+              }
+            );
         }
     });
 
@@ -126,14 +132,6 @@ var Patternatrix = (function(window){
         }
         playMIDI(note);
     });
-
-    if(midiIn){
-        midiIn.addListener('noteon', midiChannel,
-          function (e) {
-            playMIDI(e.note.name + e.note.octave);
-          }
-        );
-    }
 
     return {
         init: intialize,
