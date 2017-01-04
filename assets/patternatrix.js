@@ -21,11 +21,13 @@ var Patternatrix = (function(window){
             midiIn = WebMidi.inputs[0];
             midiOut = WebMidi.outputs[0];
 
-            midiIn.addListener('noteon', midiChannel,
-              function (e) {
-                playMIDI(e.note.name + e.note.octave);
-              }
-            );
+            if(midiIn) {
+                midiIn.addListener('noteon', midiChannel,
+                    function (e) {
+                        playMIDI(e.note.name + e.note.octave);
+                    }
+                );
+            }
         }
     });
 
@@ -265,7 +267,9 @@ var Patternatrix = (function(window){
      */
     function activatePad(note){
         var p = document.querySelector(".pads__pad[data-note='"+note+"']");
-        p.classList.add("active");
+        if(p) {
+            p.classList.add("active");
+        }
     }
 
     /**
@@ -273,7 +277,9 @@ var Patternatrix = (function(window){
      */
     function deactivatePad(note){
         var p = document.querySelector(".pads__pad[data-note='"+note+"']");
-        p.classList.remove("active");
+        if(p) {
+            p.classList.remove("active");
+        }
     }
 
     /**
@@ -281,7 +287,9 @@ var Patternatrix = (function(window){
      */
     function togglePad(note){
         var p = document.querySelector(".pads__pad[data-note='"+note+"']");
-        p.classList.toggle("active");
+        if(p) {
+            p.classList.toggle("active");
+        }
     }
 
     /**
